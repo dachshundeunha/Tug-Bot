@@ -17,7 +17,7 @@ public class CurvatureDrive extends CommandBase {
   private Supplier<Boolean> canRotateInPlace, slowMode;
 
   private double time = 0.0;
-  private Timer timer;
+  private Timer timer = new Timer();
 
   public CurvatureDrive(DrivetrainSubsystem mew, Supplier<Double> speed, Supplier<Double> rotation, Supplier<Boolean> canRotateInPlace, Supplier<Boolean> slowMode) {
     this.sub = mew;
@@ -56,7 +56,7 @@ public class CurvatureDrive extends CommandBase {
       rotationSpeed *= 0.5;
     }
 
-    sub.driveCurvature(driveSpeed, rotationSpeed, canRotate);
+    sub.driveCurvature(driveSpeed, -rotationSpeed, canRotate);
   }
 
   @Override

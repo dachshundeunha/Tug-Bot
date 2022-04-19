@@ -6,10 +6,10 @@ package frc.robot;
 
 public final class Constants {
     // Drivetrain Subsystem
-    public static final int LEFT_FRONT_MOTOR_ID = 1;
-    public static final int LEFT_REAR_MOTOR_ID = 2;
-    public static final int RIGHT_FRONT_MOTOR_ID = 3;
-    public static final int RIGHT_REAR_MOTOR_ID = 4;
+    public static final int LEFT_FRONT_MOTOR_ID = 2;
+    public static final int LEFT_REAR_MOTOR_ID = 1;
+    public static final int RIGHT_FRONT_MOTOR_ID = 4;
+    public static final int RIGHT_REAR_MOTOR_ID = 3;
 
     // Controllers
     public static final int CONT_ID = 0;

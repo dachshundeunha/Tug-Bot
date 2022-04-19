@@ -18,14 +18,22 @@ public class RobotContainer {
   private XboxController cont = new XboxController(Constants.CONT_ID);
 
   public RobotContainer() {
-    myDrive.setDefaultCommand(new CurvatureDrive(myDrive,
+    
+    
+    myDrive.setDefaultCommand(new ArcadeDrive(myDrive,
     () -> cont.getLeftY(),            // Speed
-    () -> cont.getRightX(),           // Rotation
-    () -> cont.getLeftBumper(),       // Turn in Place
+    () -> cont.getRightX() * 0.8,           // Rotation
     () -> cont.getRightBumper()));    // Slow Mode
 
+    /*
+    myDrive.setDefaultCommand(new TankDrive(myDrive,
+    () -> cont.getLeftY(),
+    () -> cont.getRightY(),
+    () -> cont.getRightBumper()));
+    */
     configureButtonBindings();
   }
+    
 
   private void configureButtonBindings() {}
 

@@ -10,27 +10,26 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-public class ArcadeDrive extends CommandBase {
+public class TankDrive extends CommandBase {
 
   private DrivetrainSubsystem sub;
-  private Supplier<Double> speed, rotation;
+  private Supplier<Double> leftSpeed, rightSpeed;
   private Supplier<Boolean> slowMode = () -> false;
 
   private double time = 0.0;
   private Timer timer = new Timer();
 
-  public ArcadeDrive(DrivetrainSubsystem mew, Supplier<Double> speed, Supplier<Double> rotation, Supplier<Boolean> slowMode) {
+  public TankDrive(DrivetrainSubsystem mew, Supplier<Double> leftSpeed, Supplier<Double> rightSpeed) {
     this.sub = mew;
-    this.speed = speed;
-    this.rotation = rotation;
-    this.slowMode = slowMode;
+    this.leftSpeed = leftSpeed;
+    this.rightSpeed = rightSpeed;
     addRequirements(sub);
   }
 
-  public ArcadeDrive(DrivetrainSubsystem mew, Supplier<Double> speed, Supplier<Double> rotation, Supplier<Boolean> slowMode, double time) {
+  public TankDrive(DrivetrainSubsystem mew, Supplier<Double> leftSpeed, Supplier<Double> rightSpeed, Supplier<Boolean> slowMode) {
     this.sub = mew;
-    this.speed = speed;
-    this.rotation = rotation;
+    this.leftSpeed = leftSpeed;
+    this.rightSpeed = rightSpeed;
     this.slowMode = slowMode;
     addRequirements(sub);
   }
@@ -43,16 +42,16 @@ public class ArcadeDrive extends CommandBase {
 
   @Override
   public void execute() {
-    double driveSpeed = speed.get();
-    double rotationSpeed = rotation.get();
+    double left = leftSpeed.get();
+    double right = rightSpeed.get();
     boolean slow = slowMode.get();
 
     if (slow) {
-      driveSpeed *= 0.5;
-      rotationSpeed *= 0.5;
+      left *= 0.5;
+      right *= 0.5;
     }
 
-    sub.driveArcade(driveSpeed, -rotationSpeed);
+    sub.driveTank(left, right);
   }
 
   @Override

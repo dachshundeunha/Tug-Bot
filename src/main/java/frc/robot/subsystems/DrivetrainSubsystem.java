@@ -30,13 +30,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     leftFrontMotor.setInverted(false);
     leftRearMotor.setInverted(false);
-    rightFrontMotor.setInverted(false);
-    rightRearMotor.setInverted(false);
+    rightFrontMotor.setInverted(true);
+    rightRearMotor.setInverted(true);
 
-    leftFrontMotor.setNeutralMode(NeutralMode.Coast);
-    leftRearMotor.setNeutralMode(NeutralMode.Coast);
-    rightFrontMotor.setNeutralMode(NeutralMode.Coast);
-    rightFrontMotor.setNeutralMode(NeutralMode.Coast);
+    leftFrontMotor.setNeutralMode(NeutralMode.Brake);
+    leftRearMotor.setNeutralMode(NeutralMode.Brake);
+    rightFrontMotor.setNeutralMode(NeutralMode.Brake);
+    rightFrontMotor.setNeutralMode(NeutralMode.Brake);
   }
 
   public void driveArcade(double speed, double rotation) {
@@ -44,7 +44,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void driveTank(double leftSpeed, double rightSpeed) {
-    myDrive.tankDrive(leftSpeed, rightSpeed);
+    myDrive.tankDrive(leftSpeed * 0.8, rightSpeed * 0.8);
   }
 
   public void driveCurvature(double speed, double rotation, boolean canTurnInPlace) {
